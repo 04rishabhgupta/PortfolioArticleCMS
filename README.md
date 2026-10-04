@@ -43,6 +43,14 @@ npm run dev
 | `app/api/archive` | Saves a backup copy on the Internet Archive |
 | `lib/publications.ts` | Known Indian publications by domain — add more any time |
 
+## Previewing the design without content
+
+Set `MOCK_CONTENT=1` in `.env.local` and run `npm run dev`. Every page fills with bracketed sample content. Remove it once real content is in the Studio.
+
+## Contact form
+
+Create a free Resend account, then set `RESEND_API_KEY` and `CONTACT_TO_EMAIL` (in `.env.local` and in Vercel). Until you verify a domain in Resend, mail can only go to the address you signed up with.
+
 ## Tests
 
 `npm test` runs offline checks of the link-reading logic.

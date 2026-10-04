@@ -47,10 +47,15 @@ Personal website for **Dr. Nikhil Agarwal** (Additional Director, Hindustan Aero
 - Template `pressMention-from-link` (param `url`) reserved for Day 3 phone sharing
 - `npm test` runs offline unfurl tests
 
-## Day 2 to-do (public site)
-- Sanity read client + GROQ queries; ISR with tag-based revalidation
-- Pages listed above, desktop + mobile, dark mode, contact form (Resend + Turnstile)
-- Reading-time, portable text renderer with pull quotes and images
+## What exists (Day 2)
+- `app/(site)/`: home, press, writing, writing/[slug], about, speaking, contact, not-found; `site.css` holds all styles and tokens
+- `lib/sanity/client.ts`: `sanityFetch(query, params, tags, fallback)` never throws; 1h revalidate + cache tags (`profile`, `siteSettings`, `pressMention`, `publication`, `article`)
+- `lib/sanity/queries.ts`: all GROQ + types. Articles with future `publishedAt` stay hidden.
+- `lib/sanity/mock.ts`: sample content when `MOCK_CONTENT=1` (dev) for design work without real data
+- Fonts: Newsreader self-hosted in `app/fonts/`, Geist via the `geist` package
+- Dark mode: `data-theme` on `<html>`, toggle stored in localStorage, no-flash script in root layout
+- Contact: `components/ContactForm.tsx` → `app/api/contact` (Resend REST, honeypot, same-origin check). Needs `RESEND_API_KEY`, `CONTACT_TO_EMAIL`.
+- CSS resets use `:where(.site)` so component classes always win; font stacks live on `.site`, not `:root`
 
 ## Day 3 to-do
 - `/api/revalidate` webhook from Sanity; live preview; scheduled publishing on the frontend (`publishedAt <= now()`)
