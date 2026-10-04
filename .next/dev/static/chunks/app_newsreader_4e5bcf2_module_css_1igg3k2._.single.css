@@ -1,0 +1,35 @@
+/* [project]/app/newsreader_4e5bcf2.module.css [app-client] (css) */
+@font-face {
+  font-family: newsreader;
+  src: url("../media/Newsreader-s.p.0dc79pquxokce.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 200 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: newsreader;
+  src: url("../media/Newsreader_Italic-s.p.11ae33ayisz--.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 200 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: newsreader Fallback;
+  src: local(Arial);
+  ascent-override: 80.52%;
+  descent-override: 29.03%;
+  line-gap-override: 0.0%;
+  size-adjust: 91.28%;
+}
+
+.newsreader_4e5bcf2-module__3PI1XG__className {
+  font-family: newsreader, newsreader Fallback, Iowan Old Style, Georgia, serif;
+}
+
+.newsreader_4e5bcf2-module__3PI1XG__variable {
+  --font-serif: "newsreader", "newsreader Fallback", Iowan Old Style, Georgia, serif;
+}
+
+/*# sourceMappingURL=app_newsreader_4e5bcf2_module_css_1igg3k2._.single.css.map*/

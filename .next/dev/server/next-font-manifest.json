@@ -1,6 +1,11 @@
 {
-  "app": {},
-  "appUsingSizeAdjust": false,
+  "app": {
+    "[project]/app/(site)/page": [
+      "static/media/Newsreader-s.p.0dc79pquxokce.woff2",
+      "static/media/Newsreader_Italic-s.p.11ae33ayisz--.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
   "pages": {},
   "pagesUsingSizeAdjust": false
 }
