@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/rishabh.ai/Desktop/PortfolioArticleCMS/app/(site)/not-found.tsx"],"sourcesContent":["import Link from 'next/link'\n\nexport default function NotFound() {\n  return (\n    <div className=\"wrap page-head not-found\">\n      <h1 className=\"page-title\">This page isn’t here.</h1>\n      <p className=\"page-intro\">It may have moved, or the link may have a typo.</p>\n      <p className=\"not-found__links\">\n        <Link href=\"/\" className=\"btn btn--primary\">Go to the homepage</Link>\n        <Link href=\"/writing\" className=\"btn btn--outline\">Writing</Link>\n        <Link href=\"/press\" className=\"btn btn--outline\">In the Press</Link>\n      </p>\n    </div>\n  )\n}\n"],"names":["NotFound","className","href"],"mappings":";;;;;AAAA;;;AAEe,SAASA;IACtB,qBACE,8OAAC;QAAIC,WAAU;;0BACb,8OAAC;gBAAGA,WAAU;0BAAa;;;;;;0BAC3B,8OAAC;gBAAEA,WAAU;0BAAa;;;;;;0BAC1B,8OAAC;gBAAEA,WAAU;;kCACX,8OAAC,0LAAI;wBAACC,MAAK;wBAAID,WAAU;kCAAmB;;;;;;kCAC5C,8OAAC,0LAAI;wBAACC,MAAK;wBAAWD,WAAU;kCAAmB;;;;;;kCACnD,8OAAC,0LAAI;wBAACC,MAAK;wBAASD,WAAU;kCAAmB;;;;;;;;;;;;;;;;;;AAIzD"}}]
-}

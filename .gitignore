@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Sanity
+.sanity/
+dist/
+
+# Environment files (secrets). .env.example is the template and is committed.
+.env*
+!.env.example
+
+# Vercel
+.vercel/
+
+# Logs and OS files
+npm-debug.log*
+*.log
+.DS_Store
