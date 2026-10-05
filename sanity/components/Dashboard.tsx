@@ -7,6 +7,7 @@ import { type FormEvent, useEffect, useState } from 'react'
 import { getPublishedId, useClient, useCurrentUser } from 'sanity'
 import { useRouter } from 'sanity/router'
 import { apiVersion, siteUrl } from '../env'
+import { cleanLink } from '../../lib/links'
 import { isProbablyUrl } from '../lib/press-fetch'
 
 type Row = {
@@ -96,7 +97,7 @@ export function Dashboard() {
 
   const addPress = async (event: FormEvent) => {
     event.preventDefault()
-    const trimmed = link.trim()
+    const trimmed = cleanLink(link)
     if (!isProbablyUrl(trimmed)) {
       setLinkError('That doesn’t look like a web link. Copy it from your browser’s address bar.')
       return

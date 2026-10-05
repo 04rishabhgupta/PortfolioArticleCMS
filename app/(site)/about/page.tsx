@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { PortableText } from 'next-sanity'
+import { JsonLd, personData } from '@/components/JsonLd'
 import { SanityImg } from '@/components/SanityImg'
 import { FALLBACK_NAME } from '@/lib/format'
 import { sanityFetch } from '@/lib/sanity/client'
@@ -14,6 +15,7 @@ export default async function AboutPage() {
 
   return (
     <>
+      <JsonLd data={personData(profile)} />
       <header className="wrap page-head about-head">
         <div>
           <h1 className="page-title">About</h1>

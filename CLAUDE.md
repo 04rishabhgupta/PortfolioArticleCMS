@@ -57,11 +57,17 @@ Personal website for **Dr. Nikhil Agarwal** (Additional Director, Hindustan Aero
 - Contact: `components/ContactForm.tsx` → `app/api/contact` (Resend REST, honeypot, same-origin check). Needs `RESEND_API_KEY`, `CONTACT_TO_EMAIL`.
 - CSS resets use `:where(.site)` so component classes always win; font stacks live on `.site`, not `:root`
 
+## What exists (Day 3)
+- `app/api/revalidate`: signed Sanity webhook → `revalidateTag(type, { expire: 0 })`. Needs `SANITY_REVALIDATE_SECRET`. Sanity client uses `useCdn: false` so refreshed pages never get stale CDN data.
+- `app/sitemap.ts`, `app/robots.ts`, `app/manifest.ts`, `app/icon.tsx` + `app/apple-icon.tsx` (NA monogram, `lib/monogram.tsx`)
+- Share images: `app/(site)/opengraph-image.tsx` (uses Site settings share picture if set) and `writing/[slug]/opengraph-image.tsx`, drawn by `lib/og.tsx` with TTF fonts in `app/fonts/og/` (satori can't read woff2)
+- JSON-LD: `components/JsonLd.tsx` (Person on home/about, Article on article pages); only Profile facts, nothing invented
+- iPhone sharing: `app/share` turns `?url=` or `?text=` into a Studio intent URL for template `pressMention-from-link` (payload = base64url JSON). `lib/links.ts` strips tracking params. iOS Shortcut steps in README. No Android share target (he uses an iPhone).
+- Contact form is hidden until `RESEND_API_KEY` and `CONTACT_TO_EMAIL` are set; the page shows his email instead.
+
 ## Day 3 to-do
-- `/api/revalidate` webhook from Sanity; live preview; scheduled publishing on the frontend (`publishedAt <= now()`)
-- JSON-LD (Person, Article), sitemap, robots, OG images via `next/og`
-- PWA manifest + share target → `/studio/intent/create/template=pressMention-from-link;type=pressMention/...`; iOS Shortcut instructions
-- QA, Lighthouse, deploy, handover guide
+- Live preview of unpublished articles (needs a Sanity viewer token)
+- QA on real content, Lighthouse, handover guide for Dr. Agarwal
 
 ## Working style
 - Run `npm run build` and `npx tsc --noEmit` before saying something is done.

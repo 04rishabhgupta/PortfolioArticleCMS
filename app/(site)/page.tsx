@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArticleItem, ArticleLead } from '@/components/Articles'
 import { ArrowRight } from '@/components/Icons'
+import { JsonLd, personData } from '@/components/JsonLd'
 import { PressFeature, PressRow } from '@/components/Press'
 import { SanityImg } from '@/components/SanityImg'
 import { FALLBACK_NAME } from '@/lib/format'
@@ -45,6 +46,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd data={personData(profile)} />
       <section className="hero wrap" aria-labelledby="hero-name">
         <div className="hero__text">
           <p className="hero__role reveal" style={{ ['--d' as string]: '0ms' }}>

@@ -6,7 +6,9 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: true,
+  // Pages are cached by Next.js, so Sanity is asked rarely. Skipping Sanity's CDN means a
+  // page refreshed by the publish webhook always gets the newest content, not a stale copy.
+  useCdn: false,
   perspective: 'published',
 })
 

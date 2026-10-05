@@ -16,6 +16,8 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(siteUrl),
     title: { default: title, template: `%s | ${title}` },
     description: settings?.description || undefined,
+    openGraph: { type: 'website', siteName: title, locale: 'en_IN', title, description: settings?.description || undefined },
+    twitter: { card: 'summary_large_image' },
   }
 }
 

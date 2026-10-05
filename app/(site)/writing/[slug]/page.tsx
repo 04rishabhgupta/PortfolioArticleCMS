@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { ArticleBody } from '@/components/ArticleBody'
 import { ArticleItem } from '@/components/Articles'
 import { ArrowUpRight } from '@/components/Icons'
+import { articleData, JsonLd } from '@/components/JsonLd'
 import { ReadingProgress } from '@/components/ReadingProgress'
 import { SanityImg } from '@/components/SanityImg'
 import { ShareButtons } from '@/components/ShareButtons'
@@ -33,7 +34,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params
   const a = await sanityFetch<Article | null>(articleQuery, { slug }, ['article'], null)
   if (!a) return {}
-  return { title: a.title, description: a.standfirst, alternates: { canonical: `/writing/${slug}` } }
+  return {
+    title: a.title,
+    description: a.standfirst,
+    alternates: { canonical: `/writing/${slug}` },
+    openGraph: { type: 'article', title: a.title, description: a.standfirst, publishedTime: a.publishedAt, url: `/writing/${slug}` },
+  }
 }
 
 export default async function ArticlePage({ params }: Params) {
@@ -51,6 +57,7 @@ export default async function ArticlePage({ params }: Params) {
 
   return (
     <>
+      <JsonLd data={articleData(article, profile, slug)} />
       <ReadingProgress />
       <article className="article">
         <header className="article__head measure-wide">

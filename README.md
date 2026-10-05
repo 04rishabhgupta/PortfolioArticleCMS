@@ -43,6 +43,36 @@ npm run dev
 | `app/api/archive` | Saves a backup copy on the Internet Archive |
 | `lib/publications.ts` | Known Indian publications by domain — add more any time |
 
+## Publish webhook (changes appear within seconds)
+
+1. Make a long random password, e.g. run `openssl rand -hex 32`.
+2. Vercel → Settings → Environment Variables: add `SANITY_REVALIDATE_SECRET` with that password, then redeploy.
+3. sanity.io/manage → project → **API → Webhooks → Create webhook**:
+   - URL: `https://<your site>/api/revalidate`
+   - Dataset: `production`
+   - Trigger on: Create, Update, Delete
+   - Filter: `_type in ["article", "pressMention", "profile", "publication", "siteSettings"]`
+   - Projection: `{_type}`
+   - Drafts: off · HTTP method: POST · Secret: the same password
+4. Publish anything in the Studio; the site updates in a few seconds.
+
+Without the webhook, pages still refresh by themselves every hour.
+
+## Adding press coverage from an iPhone
+
+`/share?url=<link>` opens a new Press coverage entry in the Studio with that link filled in.
+An iOS Shortcut sends links there from the Share button:
+
+1. Shortcuts app → **+** → name it **Add to my website**.
+2. Tap the **ⓘ** (or the name at the top) → turn on **Show in Share Sheet**.
+   Under *Receives*, keep **URLs**, **Safari web pages** and **Text**.
+3. Add the action **URL Encode** (input: *Shortcut Input*).
+4. Add the action **Open URLs** and type
+   `https://<your site>/share?url=` followed by the *URL Encoded Text* variable.
+5. Done. In Safari or a news app: Share → **Add to my website**.
+
+He must be signed in to the Studio in Safari on the phone once.
+
 ## Previewing the design without content
 
 Set `MOCK_CONTENT=1` in `.env.local` and run `npm run dev`. Every page fills with bracketed sample content. Remove it once real content is in the Studio.
