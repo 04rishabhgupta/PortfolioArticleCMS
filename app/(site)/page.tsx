@@ -22,7 +22,7 @@ export default async function HomePage() {
     sanityFetch<Profile | null>(profileQuery, {}, ['profile'], null),
     sanityFetch<PressItem[]>(pressQuery, {}, ['pressMention', 'publication'], []),
     sanityFetch<ArticleSummary[]>(articlesQuery, {}, ['article'], []),
-    sanityFetch<Publication[]>(featuredPublicationsQuery, {}, ['publication'], []),
+    sanityFetch<Publication[]>(featuredPublicationsQuery, {}, ['publication', 'pressMention', 'article'], []),
   ])
 
   const name = profile?.name || FALLBACK_NAME
@@ -36,10 +36,8 @@ export default async function HomePage() {
   const featuredPress = press[0]
   const recentPress = [...press].sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? '')).filter((p) => p !== featuredPress).slice(0, 4)
 
-  // "As featured in": publications he has chosen, else the ones that have covered him.
-  const stripNames = featuredPubs.length
-    ? featuredPubs.map((p) => p.name)
-    : [...new Set(press.map((p) => p.publication?.name).filter(Boolean) as string[])].slice(0, 6)
+  // "As featured in": every publication from his press coverage and articles.
+  const stripNames = [...new Set(featuredPubs.map((p) => p.name).filter(Boolean))]
 
   const leadArticle = articles.find((a) => a.featured) ?? articles[0]
   const otherArticles = articles.filter((a) => a !== leadArticle).slice(0, 3)

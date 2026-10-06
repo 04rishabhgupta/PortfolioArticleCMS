@@ -31,8 +31,9 @@ export const publication = defineType({
     }),
     defineField({
       name: 'showInFeaturedStrip',
-      title: 'Show in “As featured in”',
+      title: 'Always show in “As featured in”',
       type: 'boolean',
+      description: 'Publications from your press coverage and articles appear there automatically. Turn this on to show one that has no entry yet.',
       initialValue: false,
     }),
   ],

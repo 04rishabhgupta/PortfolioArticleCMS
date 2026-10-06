@@ -87,7 +87,12 @@ export const settingsQuery = groq`*[_id == "siteSettings"][0]{ title, descriptio
 export const pressQuery = groq`*[_type == "pressMention" && defined(headline) && defined(url)]
   | order(featured desc, publishedAt desc) { ${pressFields} }`
 
-export const featuredPublicationsQuery = groq`*[_type == "publication" && showInFeaturedStrip == true] | order(name asc) { _id, name, logo }`
+// "As featured in": every publication that has covered him or run one of his pieces, plus any he
+// switched on by hand. Those that appear most often come first.
+export const featuredPublicationsQuery = groq`*[_type == "publication"]{
+  _id, name, logo, showInFeaturedStrip,
+  "uses": count(*[((_type == "pressMention" && defined(headline) && defined(url)) || (${liveArticle})) && references(^._id)])
+}[uses > 0 || showInFeaturedStrip == true] | order(uses desc, name asc) { _id, name, logo }`
 
 export const articlesQuery = groq`*[${liveArticle}] | order(publishedAt desc) { ${articleSummaryFields} }`
 
