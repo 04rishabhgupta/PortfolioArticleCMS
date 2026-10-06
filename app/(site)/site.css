@@ -155,6 +155,9 @@ body { margin: 0; background: var(--paper); }
 .site-header { border-bottom: 1px solid var(--rule); position: relative; z-index: 20; background: var(--paper); }
 .site-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; }
 .wordmark { font-family: var(--serif); font-size: 1.5rem; font-weight: 450; letter-spacing: -0.01em; text-decoration: none; font-variation-settings: 'opsz' 36; }
+.signature-link { display: inline-flex; align-items: center; min-height: 44px; padding-block: 6px; color: var(--ink); transition: color 0.2s; }
+.signature-link:hover { color: var(--accent); }
+.signature { display: block; height: 54px; width: auto; overflow: visible; }
 .nav { display: flex; align-items: center; gap: 4px 26px; font-size: 0.9375rem; }
 .nav__link { position: relative; display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; color: var(--ink-2); }
 .nav__link:hover, .nav__link[aria-current='page'] { color: var(--ink); }
@@ -456,6 +459,103 @@ body { margin: 0; background: var(--paper); }
 
 .not-found { min-height: 50vh; }
 .not-found__links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ---------- Phones ----------
+   Everything below applies only to narrow screens; the desktop layout above is untouched. */
+@media (max-width: 600px) {
+  :root { --section: 52px; }
+  .site-header__inner { min-height: 64px; }
+  .wordmark { font-size: 1.375rem; }
+  .signature { height: 44px; }
+
+  /* Tighter vertical rhythm, so a phone screen shows more than one idea at a time. */
+  .page-head { gap: 16px; padding-block: 36px 28px; }
+  .page-title { font-size: clamp(2.75rem, 13vw, 3.25rem); }
+  .section-head { margin-bottom: 24px; }
+  .section-title { font-size: 2.25rem; }
+
+  .roles__item { padding-top: 16px; }
+  .roles__item dd { font-size: 1.125rem; }
+
+  .featured-in__inner { gap: 10px; padding-block: 20px; }
+  .featured-in ul { gap: 6px 22px; }
+  .featured-in li { font-size: 1.125rem; }
+
+  /* Press lists: publication and date share one line. */
+  .press-row { grid-template-columns: auto minmax(0, 1fr) auto; gap: 6px 10px; padding: 18px 0; }
+  .press-row__pub { grid-column: 1; grid-row: 1; }
+  .press-row__date { grid-column: 2; grid-row: 1; }
+  .press-row__title { grid-column: 1 / 3; grid-row: 2; font-size: 1.25rem; }
+  .press-row__icon { grid-column: 3; grid-row: 2; }
+
+  /* Press cards become compact rows with a small picture on the right, like a news app. */
+  .card-grid { gap: 0; }
+  .press-card {
+    display: grid; grid-template-columns: minmax(0, 1fr) 88px; column-gap: 16px; row-gap: 8px;
+    grid-template-areas: 'meta img' 'title img' 'foot foot';
+    padding: 20px 0; border-top: 1px solid var(--rule);
+  }
+  .card-grid > .press-card:first-child { padding-top: 0; border-top: 0; }
+  .press-card > .img { grid-area: img; aspect-ratio: 1 !important; border-radius: 2px; }
+  .press-card > .press-meta { grid-area: meta; }
+  .press-card > .press-card__title { grid-area: title; font-size: 1.25rem; }
+  .press-card > .press-card__foot { grid-area: foot; }
+  .press-group__year { margin-bottom: 20px; font-size: 1.875rem; }
+  .press-groups { gap: 48px; }
+
+  /* Filters: one swipeable row of types, then year and search side by side. */
+  .filter-bar__inner { padding-block: 12px; }
+  .pills {
+    flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
+    margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); width: calc(100% + 2 * var(--gutter));
+  }
+  .pills::-webkit-scrollbar { display: none; }
+  .pill { flex: none; }
+  .filter-bar__fields { width: 100%; flex-wrap: nowrap; }
+  .filter-bar__fields .field-inline:last-child { flex: 1; }
+  .filter-bar__fields .field-inline:has(select) > span { display: none; }
+  /* 16px or larger stops iPhones zooming in when a field is tapped. */
+  .field-inline input, .field-inline select { font-size: 1rem; }
+  .field-inline input { width: 100%; }
+
+  /* Writing lists: thumbnails keep their square shape. */
+  .article-item--image .img { flex-basis: 88px; align-self: flex-start; }
+  .article-item__title { font-size: 1.3125rem; }
+  .article-lead__title { font-size: 1.75rem; }
+  .writing-year__label { font-size: 1.875rem; }
+
+  /* Article page: a slightly smaller reading size suits a phone's narrow line. */
+  .article__head { gap: 18px; padding-block: 32px 28px; }
+  .article__title { font-size: 2.25rem; }
+  .article__standfirst { font-size: 1.1875rem; }
+  .prose { font-size: 1.1875rem; line-height: 1.6; }
+  .prose > p:first-child { font-size: 1.3125rem; line-height: 1.5; }
+  .prose h2 { font-size: 1.625rem; }
+  .prose h3 { font-size: 1.3125rem; }
+  .pull-quote { padding-block: 20px; }
+  .pull-quote blockquote { font-size: 1.5rem; }
+  .share__btn { min-height: 44px; padding: 0 16px; font-size: 0.875rem; }
+  .original-link { margin-top: 36px; }
+  .author-box { flex-direction: column; gap: 14px; padding: 22px; margin-top: 40px; }
+  .author-box__avatar { width: 56px; }
+
+  /* About and Speaking: portraits at a sensible size instead of filling the screen. */
+  .about-head .page-intro { margin-top: 16px; }
+  .about-page { gap: 36px; }
+  .about-page__portrait { max-width: 260px; }
+  .about-page__text { gap: 44px; }
+  .media-kit { gap: 40px; }
+  .media-kit__portrait { max-width: 240px; }
+
+  /* Contact: the email address is the main action, so make it easy to tap. */
+  .contact-page { gap: 32px; padding-block: 36px var(--section); }
+  .contact-page__email a { display: inline-flex; align-items: center; min-height: 44px; font-size: 1.125rem; word-break: break-all; }
+  .contact-band__inner { gap: 24px; padding-block: 64px; }
+  .contact-band__email { display: inline-flex; align-items: center; min-height: 44px; }
+  .contact-band__actions .btn { flex: 1 1 140px; }
+
+  .site-footer__inner { padding-block: 28px; }
+}
 
 @media print {
   .site-header, .site-footer, .share, .progress, .contact-band { display: none; }

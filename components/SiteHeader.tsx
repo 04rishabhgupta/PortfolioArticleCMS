@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Close, Menu } from './Icons'
+import { Signature } from './Signature'
 import { ThemeToggle } from './ThemeToggle'
 
 const NAV = [
@@ -26,12 +27,13 @@ export function SiteHeader({ name }: { name: string }) {
   }, [open])
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/')
-  const shortName = name.replace(/^Dr\.?\s+/i, '')
 
   return (
     <header className="site-header">
       <div className="wrap site-header__inner">
-        <Link href="/" className="wordmark">{shortName}</Link>
+        <Link href="/" className="signature-link" aria-label={`${name}, home`}>
+          <Signature className="signature" />
+        </Link>
         <nav aria-label="Main" className="nav">
           {NAV.map((item) => (
             <Link key={item.href} href={item.href} className="nav__link" aria-current={isActive(item.href) ? 'page' : undefined}>
