@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Close, Menu } from './Icons'
-import { Signature } from './Signature'
 import { ThemeToggle } from './ThemeToggle'
 
 const NAV = [
@@ -32,8 +31,8 @@ export function SiteHeader({ name }: { name: string }) {
     <header className="site-header">
       <div className="wrap site-header__inner">
         <Link href="/" className="signature-link" aria-label={`${name}, home`}>
-          <Signature className="signature" />
-        </Link>
+  <span className="site-header__name">Dr. Nikhil Agarwal</span>
+</Link>
         <nav aria-label="Main" className="nav">
           {NAV.map((item) => (
             <Link key={item.href} href={item.href} className="nav__link" aria-current={isActive(item.href) ? 'page' : undefined}>
