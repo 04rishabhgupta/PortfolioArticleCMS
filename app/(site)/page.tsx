@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Timeline from '@/components/Timeline'
 import { ArticleItem, ArticleLead } from '@/components/Articles'
 import { ArrowRight } from '@/components/Icons'
 import { JsonLd, personData } from '@/components/JsonLd'
@@ -69,7 +68,7 @@ export default async function HomePage() {
           {profile?.portrait?.credit && <figcaption>Photograph: {profile.portrait.credit}</figcaption>}
         </figure>
       </section>
-      <Timeline articles={articles} press={press} />
+
       {roles.length > 0 && (
         <section className="wrap roles" aria-label="Current roles">
           <dl className="roles__list">
