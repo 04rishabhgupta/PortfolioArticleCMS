@@ -561,3 +561,121 @@ body { margin: 0; background: var(--paper); }
   .site-header, .site-footer, .share, .progress, .contact-band { display: none; }
   .site { background: #fff; color: #000; }
 }
+
+/* =========================================================
+   As featured in — infinite marquee
+   ========================================================= */
+
+.featured-in {
+  overflow: hidden;
+  padding: 34px 0 42px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.featured-in__inner {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.featured-in__label {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.featured-in__marquee {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+.featured-in__track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: featured-in-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.featured-in__item {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 0 34px;
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 2.4vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.featured-in__item::after {
+  content: "·";
+  margin-left: 68px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+
+@keyframes featured-in-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause when the user hovers over the carousel */
+.featured-in__marquee:hover .featured-in__track {
+  animation-play-state: paused;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .featured-in__track {
+    animation: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .featured-in {
+    padding: 28px 0 34px;
+  }
+
+  .featured-in__inner {
+    margin-bottom: 20px;
+  }
+
+  .featured-in__item {
+    padding: 0 22px;
+    font-size: 1.35rem;
+  }
+
+  .featured-in__item::after {
+    margin-left: 44px;
+  }
+
+  .featured-in__track {
+    animation-duration: 24s;
+  }
+}

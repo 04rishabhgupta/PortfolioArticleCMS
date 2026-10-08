@@ -83,13 +83,25 @@ export default async function HomePage() {
       )}
 
       {stripNames.length > 0 && (
-        <section className="featured-in" aria-label="As featured in">
-          <div className="wrap featured-in__inner">
-            <p className="featured-in__label">As featured in</p>
-            <ul>{stripNames.map((n) => <li key={n}>{n}</li>)}</ul>
-          </div>
-        </section>
-      )}
+  <section className="featured-in" aria-label="As featured in">
+    <div className="wrap featured-in__inner">
+      <p className="featured-in__label">As featured in</p>
+    </div>
+
+    <div className="featured-in__marquee" aria-hidden="true">
+      <div className="featured-in__track">
+        {[...stripNames, ...stripNames].map((name, index) => (
+          <span
+            key={`${name}-${index}`}
+            className="featured-in__item"
+          >
+            {name}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
 
       {featuredPress && (
         <section className="wrap section" aria-labelledby="featured-h">
