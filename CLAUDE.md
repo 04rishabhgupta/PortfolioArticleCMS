@@ -1,6 +1,6 @@
 # Project brief for Claude Code
 
-Personal website for **Dr. Nikhil Agarwal** (Additional Director, Hindustan Aeronautics Limited) with a self-managed CMS. He is non-technical: he must be able to publish without contacting a developer.
+Personal website for **Dr. Nikhil Agarwal** (Independent Director, Hindustan Aeronautics Limited) with a self-managed CMS. He is non-technical: he must be able to publish without contacting a developer.
 
 ## What the site does
 - Shows **his own articles** (written in the CMS, or linked op-eds published elsewhere).

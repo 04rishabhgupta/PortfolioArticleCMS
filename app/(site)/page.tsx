@@ -31,7 +31,7 @@ export default async function HomePage() {
   const roles = profile?.currentRoles ?? []
   const leadRole = roles[0]
     ? [roles[0].title, roles[0].organisation].filter(Boolean).join(', ')
-    : 'Additional Director, Hindustan Aeronautics Limited'
+    : 'Independent Director, Hindustan Aeronautics Limited (HAL)'
 
   const featuredPress = press[0]
   const recentPress = [...press].sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? '')).filter((p) => p !== featuredPress).slice(0, 4)

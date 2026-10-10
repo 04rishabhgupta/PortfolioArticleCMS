@@ -33,7 +33,7 @@ This is the complete reference for this codebase. Read it top to bottom once to 
 
 ## 1. What this project is
 
-A personal website for **Dr. Nikhil Agarwal** (Additional Director, Hindustan Aeronautics Limited), with a built-in CMS he runs himself. He isn't technical, so everything he touches has to work without a developer.
+A personal website for **Dr. Nikhil Agarwal** (Independent Director, Hindustan Aeronautics Limited), with a built-in CMS he runs himself. He isn't technical, so everything he touches has to work without a developer.
 
 The site shows:
 
@@ -309,7 +309,7 @@ Every page is a server component in `app/(site)/` that calls `sanityFetch` and r
 | 404 | `not-found.tsx` | none | |
 
 **Home sections, in order:**
-1. **Hero**: lead role (first `currentRoles`, falling back to "Additional Director, Hindustan Aeronautics Limited"), name split over two lines, `positioning`, buttons and portrait. This is the site's single entrance animation (`.reveal` + `--d` delays).
+1. **Hero**: lead role (first `currentRoles`, falling back to "Independent Director, Hindustan Aeronautics Limited (HAL)", typed in `page.tsx` and `opengraph-image.tsx`), name split over two lines, `positioning`, buttons and portrait. This is the site's single entrance animation (`.reveal` + `--d` delays).
 2. **Roles strip**: all current roles.
 3. **As featured in**:
    - **What it lists:** every publication referenced by a published press item or a live article, plus any with `showInFeaturedStrip`. Publications that appear most often come first (`featuredPublicationsQuery`).

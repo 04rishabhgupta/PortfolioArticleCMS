@@ -25,7 +25,7 @@ export default async function Image() {
   const role = profile?.currentRoles?.[0]
   return shareCard({
     title: profile?.name || FALLBACK_NAME,
-    kicker: role ? [role.title, role.organisation].filter(Boolean).join(', ') : 'Additional Director, Hindustan Aeronautics Limited',
+    kicker: role ? [role.title, role.organisation].filter(Boolean).join(', ') : 'Independent Director, Hindustan Aeronautics Limited (HAL)',
     footer: profile?.positioning || 'Writing, press coverage and speaking',
     site: siteHost(siteUrl),
   })
